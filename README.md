@@ -52,7 +52,9 @@ Quantidade de imagens que deveremos trazer do seu profile.
 Seu id do Instagram e o Token de acesso ao seu profile se você não sabe pode acessar um dos links abaixo que lá você pegar. 
 
 <a href="http://www.pinceladasdaweb.com.br/instagram/access-token/">http://www.pinceladasdaweb.com.br/instagram/access-token</a>
+
 <a href="http://jelled.com/instagram/access-token">http://jelled.com/instagram/access-token</a>
+
 <a href="https://instagram.com/developer/authentication/">https://instagram.com/developer/authentication/</a>
 
 #### 4. classList (optional)
