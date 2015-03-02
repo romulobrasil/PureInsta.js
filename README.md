@@ -58,25 +58,25 @@ Seu id do Instagram e o Token de acesso ao seu profile se você não sabe pode a
 <a href="https://instagram.com/developer/authentication/">https://instagram.com/developer/authentication/</a>
 
 #### 4. classList (optional)
-Class da lista de sua preferencia caso não a declare fica a default que é pureInsta-item
+Class da lista de sua preferencia caso não a declare fica a default que é **pureInsta-item**
 
 #### 5. classHover (optional)
-Class da uma div caso queira fazer um hover que também ficam de container para o título de nome sua preferencia que caso não a declare fica a default que é pureInsta-hover
+Class da uma div caso queira fazer um hover que também ficam de container para o título de nome sua preferencia que caso não a declare fica a default que é **pureInsta-hover**
 
 #### 6. classPlus (optional)
 Class para colocar uma lupa ou um símbolo de mais, isso fica de sua preferencia
 
 #### 7. images (optional)
 Por default é declarado o tamanho low mas caso queira declarar outro logo abaixo tem como fazer isso com os três tamanhos existentes na API:
- - low: width:306 | height:306;
- - thumbnail: width:150 | height:150;
- - standard: width:640 | height:640;
+ - **low**: width:306 | height:306;
+ - **thumbnail**: width:150 | height:150;
+ - **standard**: width:640 | height:640;
 
 #### 8. title (optional)
-Juntamente com um número inteiro pois indica quantidade de caracteres que será exibido os títilo assim evita quebra de layout, caso declare o número zero (0) virar o título sem qualquer limite de caracteres. 
+Juntamente com um número inteiro pois indica quantidade de caracteres que será exibido os títilo assim evita quebra de layout, caso declare o número **zero** (0) virar o título sem qualquer limite de caracteres. 
 
 #### 9. openInsta (optional)
-Declaração booleana com apenas true para abrir em outra janela o link da foto dentro do Instagram e no caso não seja declarado vem a imagem em sua resolução maior e com uma class chamada pureInsta-target que você pode usar em um plugin de modal.
+Declaração booleana com apenas true para abrir em outra janela o link da foto dentro do Instagram e no caso não seja declarado vem a imagem em sua resolução maior e com uma class chamada **pureInsta-target** que você pode usar em um plugin de modal.
 
 
 
