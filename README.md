@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="http://romulobrasil.com">
-    <img height="220" width="300" src="http://romulobrasil.com/wp-content/themes/romulobrasil.com/img/logo.png"/>
+  <a href="https://romulobrasil.com" target="_blank" title="Acessar o site Rômulo Brasil">
+  <img width="200" height="146" src="https://romulobrasil.com/img/logo.png"/>
   </a>
 </p>
 
@@ -46,15 +46,14 @@ Temos quatros pararametros que são primordiais para que nosso plugin funcione q
 Elemento (lista) que irar receber nossa lista de imagens do Instagram podendo ser class ou id. 
 
 #### 2. amount
-Quantidade de imagens que deveremos trazer do seu profile. 
+Quantidade de imagens que deveremos trazer do seu profile. <br>
+Quantidade máxima permitida pelo Instagram é de 20 fotos, sendo as 20 últimas postadas. 
 
 #### 3. userID e accessToken
 Seu id do Instagram e o Token de acesso ao seu profile se você não sabe pode acessar um dos links abaixo que lá você pegar. 
 
-<a href="http://www.pinceladasdaweb.com.br/instagram/access-token/">http://www.pinceladasdaweb.com.br/instagram/access-token</a>
-
-<a href="http://jelled.com/instagram/access-token">http://jelled.com/instagram/access-token</a>
-
+<a href="http://www.pinceladasdaweb.com.br/instagram/access-token/">http://www.pinceladasdaweb.com.br/instagram/access-token</a><br>
+<a href="http://jelled.com/instagram/access-token">http://jelled.com/instagram/access-token</a> <br>
 <a href="https://instagram.com/developer/authentication/">https://instagram.com/developer/authentication/</a>
 
 #### 4. classList (optional)
@@ -77,13 +76,3 @@ Juntamente com um número inteiro pois indica quantidade de caracteres que será
 
 #### 9. openInsta (optional)
 Declaração booleana com apenas true para abrir em outra janela o link da foto dentro do Instagram e no caso não seja declarado vem a imagem em sua resolução maior e com uma class chamada **pureInsta-target** que você pode usar em um plugin de modal.
-
-
-
-
-
-
-
-
-
-
