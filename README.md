@@ -39,7 +39,7 @@ Segundo chamamos da nosso plugin da pasta do seu projeto e em seguinda o instaci
 
 Temos quatros pararametros que são primordiais para que nosso plugin funcione que são eles: element, amount, userID e accessToken.
 
-###Abaixo falaremos de cada um deles:
+### Abaixo falaremos de cada um deles:
 
 #### 1. element
 Elemento (lista) que irar receber nossa lista de imagens do Instagram podendo ser class ou id. 
