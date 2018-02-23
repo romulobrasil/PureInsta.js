@@ -1,5 +1,5 @@
 /* ========================================================================
- * Pure Insta JS: pureinsta.js v0.3
+ * Pure Insta JS: pureinsta.js v0.4
  * https://romulobrasil.com
  * Copyright (c) 2016 Rômulo Brasil
  * ========================================================================
@@ -16,6 +16,7 @@ var PureInsta = function() {
             var classOpen  = '';
             var titulo     = '';
             var images     = '';
+            var num        = '';
 
             if (obj[0].element === 'undefined') {
                 console.log('PureInsta.js: Elemento não declarado, favor olhar documentação');
@@ -30,12 +31,6 @@ var PureInsta = function() {
                 console.log("PureInsta.js: quantidade está acima de 20. Quantidade máxima de 20 fotos.");
             } else {
                 var quant = obj[0].quantidade;
-            }
-
-            if ( obj[0].userID === undefined ) {
-                console.log("PureInsta.js: Paramentro de User ID não foi definido");
-            } else {
-                var id = obj[0].userID;
             }
 
             if (obj[0].accessToken === undefined) {
@@ -63,7 +58,7 @@ var PureInsta = function() {
             }
 
             var xmlhttp = new XMLHttpRequest();
-            var url = 'https://api.instagram.com/v1/users/' + id + '/media/recent/?access_token=' + token;
+            var url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + token;
             console.log(url);
 
             xmlhttp.onreadystatechange = function() {
@@ -79,10 +74,16 @@ var PureInsta = function() {
                 var out = "";
                 var i;
                 console.log(arr);
-
-                for(i = 0; i < quant; i++) {
+                
+                if(Object.keys(arr.data).length < quant){
+                    num = Object.keys(arr.data).length;
+                } else {
+                    num = quant;
+                }
+                
+                for(i = 0; i < num; i++) {
                     if (obj[0].openInsta === undefined || obj[0].openInsta === false) {
-                        classOpen = arr.data[i].images.standard_resolution.url; 
+                        classOpen = arr.data[i].images.standard_resolution.url;
                     } else {
                         classOpen = arr.data[i].link;
                     }
@@ -133,7 +134,6 @@ var PureInsta = function() {
                         '</a>' + 
                         '</li>';
                 }
-
                 el.innerHTML = out;
             }
         }

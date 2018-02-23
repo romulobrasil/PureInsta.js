@@ -26,7 +26,6 @@ Segundo chamamos da nosso plugin da pasta do seu projeto e em seguinda o instaci
     PureInsta.init({
         element:'#pure_insta',
         amount: 8,
-        userID:'yournumber',
         accessToken:'yournumber',
         classList: 'list',
         classHover: 'hover',
@@ -49,11 +48,10 @@ Elemento (lista) que irar receber nossa lista de imagens do Instagram podendo se
 Quantidade de imagens que deveremos trazer do seu profile. <br>
 Quantidade máxima permitida pelo Instagram é de 20 fotos, sendo as 20 últimas postadas. 
 
-#### 3. userID e accessToken
-Seu id do Instagram e o Token de acesso ao seu profile se você não sabe pode acessar um dos links abaixo que lá você pegar. 
+#### 3. accessToken
+Seu Token de acesso ao seu profile se você não sabe pode acessar um dos links abaixo que lá você pegar. 
 
-<a href="http://www.pinceladasdaweb.com.br/instagram/access-token/">http://www.pinceladasdaweb.com.br/instagram/access-token</a><br>
-<a href="http://jelled.com/instagram/access-token">http://jelled.com/instagram/access-token</a> <br>
+<a href="http://instagram.pixelunion.net/">http://instagram.pixelunion.net/</a> <br>
 <a href="https://instagram.com/developer/authentication/">https://instagram.com/developer/authentication/</a>
 
 #### 4. classList (optional)
