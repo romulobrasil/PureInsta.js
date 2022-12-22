@@ -4,73 +4,84 @@
   </a>
 </p>
 
+# Pure Insta JS (pureinsta.js)
 
-Pure Insta JS (pureinsta.js)
-==========
+Mais um para série de plugins feito plenamente com Javascript pure e esse é um bem simples que brincamos com a API do Instagram trazendo sua lista de fotos.
 
-Mais um para série de plugins feito plenamente com Javascript pure e esse é um bem simples que brincamos com a API do Instagram trazendo sua lista de fotos com titulo (optional) e futuramente implementaremos o as curtidas também.
-
-Bom, abaixo trataremos de como fazer para instanciar o nosso plugin. 
+Bom, abaixo trataremos de como fazer para instanciar o nosso plugin.
 
 Primeiramente declaramos uma lista com um ID ou uma class de sua preferência:
 
 ```
-<ul id="pure_insta"></ul>
+<div id="instagram"></div>
 ```
 
-Segundo chamamos da nosso plugin da pasta do seu projeto e em seguinda o instaciaremos com alguns paramentros que falaremos logo após 
+Segundo chamamos da nosso plugin da pasta do seu projeto e em seguinda o instaciaremos com alguns paramentros que falaremos logo após
 
-```    
+```
 <script src="pureinsta.js"></script>
 <script>
-    PureInsta.init({
-        element:'#pure_insta',
-        amount: 8,
-        accessToken:'yournumber',
-        classList: 'list',
-        classHover: 'hover',
-        classPlus: 'lupa',
-        images: 'low',
-        title: 300,
-        openInsta: true
-    });
+  PureInsta.init({
+    element: '#instagram',
+    token: 'Seu Access Token aqui',
+    amount: 10,
+    classList: 'instagram-item',
+    classHover: 'instagram-item--hover',
+    classPlus: 'fa-lupa',
+    fields: 'caption,id,media_type,media_url,permalink,thumbnail_url',
+    openInsta: true,
+    title: 80,
+  });
 </script>
 ```
 
-Temos quatros pararametros que são primordiais para que nosso plugin funcione que são eles: element, amount, userID e accessToken.
+Temos dois pararametros que são primordiais para que nosso plugin funcionar, são eles: _element_ e _token_.
 
 ### Abaixo falaremos de cada um deles:
 
 #### 1. element
-Elemento (lista) que irar receber nossa lista de imagens do Instagram podendo ser class ou id. 
 
-#### 2. amount
-Quantidade de imagens que deveremos trazer do seu profile. <br>
-Quantidade máxima permitida pelo Instagram é de 20 fotos, sendo as 20 últimas postadas. 
+Tag HTML que irar receber a lista de imagens do Instagram podendo ser _class_ ou _id_.
 
-#### 3. accessToken
-Seu Token de acesso ao seu profile se você não sabe pode acessar um dos links abaixo que lá você pegar. 
+#### 2. accessToken
 
-<a href="http://instagram.pixelunion.net/">http://instagram.pixelunion.net/</a> <br>
-<a href="https://instagram.com/developer/authentication/">https://instagram.com/developer/authentication/</a>
+Seu Token de acesso à sua conta do Instagram. Basta acessar o link: <https://developers.facebook.com/apps>. Caso tenha alguma dificudade ou dúvida, pode acessar esse video que está bem explicativo <https://www.youtube.com/watch?v=E8linFMAoQk>.
 
-#### 4. classList (optional)
-Class da lista de sua preferencia caso não a declare fica a default que é **pureInsta-item**
+#### 3. amount
+
+Quantidade de imagens que deveremos trazer da sua conta do Instagram. <br>
+Quantidade máxima permitida pelo Instagram é de 25 fotos, sendo as 25 últimas postadas. Ou seja, poderá escolher apenas de 1 a 25 fotos. Caso deixe de declarar o amount, irá puxar todas as últimas 25 fotos.
+
+#### 4. bgPhoto (optional)
+
+Para caso queira que a foto também no background do elemento _figure_ assim facilitando a melhor estilização no CSS.
 
 #### 5. classHover (optional)
-Class da uma div caso queira fazer um hover que também ficam de container para o título de nome sua preferencia que caso não a declare fica a default que é **pureInsta-hover**
 
-#### 6. classPlus (optional)
-Class para colocar uma lupa ou um símbolo de mais, isso fica de sua preferencia
+Class para fazer um hover que também ficam de container para o título, o nome da class é de sua preferência, caso não a declare fica a default que é _pure-insta\_\_hover_.
 
-#### 7. images (optional)
-Por default é declarado o tamanho low mas caso queira declarar outro logo abaixo tem como fazer isso com os três tamanhos existentes na API:
- - **low**: width:306 | height:306;
- - **thumbnail**: width:150 | height:150;
- - **standard**: width:640 | height:640;
+#### 6. classItem (optional)
+
+Class do item de sua preferencia, caso não a declare fica a default que é _pure-insta\_\_item_.
+
+#### 7. classPlus (optional)
+
+Class para colocar uma lupa ou um símbolo de mais, isso fica de sua preferencia.
+
+#### 8. fields (optional)
+
+1. **caption** - O texto da legenda da foto.
+2. **id** - O ID da foto.
+3. **media_url** - URL da foto.
+4. **permalink** - A URL permanente da foto. Será omitido se a mídia contiver material protegido por direitos autorais ou tiver sido sinalizada por violação de direitos autorais.
+5. **thumbnail_url** - URL da imagem em miniatura da mídia. Disponível apenas para post de video.
 
 #### 8. title (optional)
-Juntamente com um número inteiro pois indica quantidade de caracteres que será exibido os títilo assim evita quebra de layout, caso declare o número **zero** (0) virar o título sem qualquer limite de caracteres. 
+
+Indica quantidade de caracteres que será exibido os títilos assim evita quebra de layout, caso declare o número _zero_, 0, ou deixe de declarar, o título ficará sem qualquer limite de caracteres.
 
 #### 9. openInsta (optional)
-Declaração booleana com apenas true para abrir em outra janela o link da foto dentro do Instagram e no caso não seja declarado vem a imagem em sua resolução maior e com uma class chamada **pureInsta-target** que você pode usar em um plugin de modal.
+
+Declaração booleana com apenas _true_ para abrir em outra janela o link da foto dentro do Instagram e no caso não seja declarado vem a imagem em sua resolução maior e com uma class chamada _pure-insta\_\_target_ que você pode usar em um plugin de modal.
+
+### Acesse: <https://romulobrasil.com>

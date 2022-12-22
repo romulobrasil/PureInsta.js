@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Pure Insta - Rômulo Brasil</title>
-        
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PureInsta.js by Rômulo Brasil</title>
 </head>
 <body>
-   
-    <ul id="test"></ul>
-    <script src="PureInsta.js"></script>
-    <script>
-        PureInsta.init({
-            element:'#test',
-            quantidade: 12,
-            accessToken:'SEU TOKEN',
-            classList: 'list',
-            classHover: 'hover',
-            classPlus: 'lupa',
-            images: 'low', // Tipos de tamanhos
-            titulo: 300, //Quantidade de caracteres
-            openInsta: false
-        });
-    </script>
-
+  <div id="instagram"></div>
+  <script src="PureInsta.js"></script>
+  <script>
+    PureInsta.init({
+      element: '#instagram', 
+      token: 'Seu Access Token aqui',
+      amount: 10,
+      bgPhoto: true,
+      classItem: 'instagram-item',
+      classHover: 'instagram-item--hover', 
+      classPlus: 'fa-lupa', 
+      fields: 'caption,id,media_type,media_url,permalink,thumbnail_url', 
+      openInsta: true,
+      title: 80,
+    });
+  </script>
 </body>
 </html>

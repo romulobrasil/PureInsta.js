@@ -1,141 +1,78 @@
 /* ========================================================================
- * Pure Insta JS: pureinsta.js v0.4
+ * Pure Insta JS: pureinsta.js v1.0
  * https://romulobrasil.com
  * Copyright (c) 2016 Rômulo Brasil
  * ========================================================================
  */
 
-'use strict';
-var PureInsta = function() {
-    return {
-        init : function() {
-            var obj        = arguments;
-            var classList  = '';
-            var classHover = '';
-            var classPlus  = '';
-            var classOpen  = '';
-            var titulo     = '';
-            var images     = '';
-            var num        = '';
-
-            if (obj[0].element === 'undefined') {
-                console.log('PureInsta.js: Elemento não declarado, favor olhar documentação');
-            } else {
-                var el = document.querySelector(obj[0].element);
-            }
-
-            if (obj[0].quantidade === 'undefined') {
-                var quant = 20;
-            } else if (obj[0].quantidade > 20 ) {
-                var quant = 20;
-                console.log("PureInsta.js: quantidade está acima de 20. Quantidade máxima de 20 fotos.");
-            } else {
-                var quant = obj[0].quantidade;
-            }
-
-            if (obj[0].accessToken === undefined) {
-                console.log("PureInsta.js: Paramentro de Access Token não foi definido");
-            } else {
-                var token = obj[0].accessToken;
-            }
-
-            if (obj[0].classList === undefined) {
-                classList = 'pureInsta-item';
-            } else {
-                classList = obj[0].classList;
-            }
-
-            if (obj[0].classHover === undefined) {
-                classHover = 'pureInsta-hover';
-            } else {
-                classHover = obj[0].classList;
-            }
-
-            if (obj[0].classPlus === undefined) {
-                classPlus = '';
-            } else {
-                classPlus = '<span class="' + obj[0].classPlus + '"></span>';
-            }
-
-            var xmlhttp = new XMLHttpRequest();
-            var url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + token;
-            console.log(url);
-
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    var json = JSON.parse(xmlhttp.responseText);
-                    loopInsta(json);
-                }
-            }
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
-
-            function loopInsta(arr) {
-                var out = "";
-                var i;
-                console.log(arr);
-                
-                if(Object.keys(arr.data).length < quant){
-                    num = Object.keys(arr.data).length;
+const PureInsta = {
+    captionTxt: '',
+    el: '',
+    plus: '',
+    data: {
+      amount: 25,
+      bgPhoto: false,
+      classHover: 'pure-insta__hover', 
+      classItem: 'pure-insta__item',
+      classPlus: '', 
+      element: 'PureInsta.js: favor declarar o elemento que vai receber as imagens.', 
+      fields: 'caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username', 
+      openInsta: false,
+      title: 0,
+      token: 'PureInsta.js: favor declarar o token.',
+    },
+    loopInsta(){
+      const endpoint = `https://graph.instagram.com/me/media?access_token=${this.data.token}&fields=${this.data.fields}`;
+      if(endpoint){
+        fetch(endpoint)
+          .then(r => r.json())
+          .then(r => {
+            let out = '';
+            let i = 1;
+            for(let foto of r.data){
+              let fotoURL = (foto.thumbnail_url) ? foto.thumbnail_url : foto.media_url;
+              let permalink = (this.data['openInsta']) ? foto.permalink : fotoURL;
+              if(foto.caption){
+                if(this.data['title'] == 0){
+                  this.captionTxt = `<span class="pure-insta__caption">${foto.caption}</span>`;
+                } else if(foto.caption.length <= this.data['title']){
+                  this.captionTxt = `<span class="pure-insta__caption">${foto.caption.substring(0, this.data['title'])}</span>`;
                 } else {
-                    num = quant;
+                  this.captionTxt = `<span class="pure-insta__caption">${foto.caption.substring(0, this.data['title'])}...</span>`;
                 }
-                
-                for(i = 0; i < num; i++) {
-                    if (obj[0].openInsta === undefined || obj[0].openInsta === false) {
-                        classOpen = arr.data[i].images.standard_resolution.url;
-                    } else {
-                        classOpen = arr.data[i].link;
-                    }
-
-                    if (obj[0].images === undefined) {
-                        images = arr.data[i].images.low_resolution.url; 
-                    } else {
-                        if (obj[0].images === 'low') {
-                            images = arr.data[i].images.low_resolution.url; 
-                        } else if (obj[0].images === 'thumbnail') {
-                            images = arr.data[i].images.thumbnail.url; 
-                        } else if (obj[0].images === 'standard') {
-                            images = arr.data[i].images.standard_resolution.url; 
-                        }
-                    }
-
-                    if (obj[0].titulo === undefined) {
-                        titulo = '';
-                    } else {
-                        var length = obj[0].titulo;
-                        var str =  '';
-                        var caption = arr.data[i].caption;
-
-                        if (caption !== null ) {
-                            str = caption.text;
-
-                            if (length === 0) {
-                                titulo = '<p>' + str + '</p>';
-                            } else if (str.length <= length) { 
-                                titulo = '<p>' + str.substring(0, length) + '</p>';
-                            } else {
-                                titulo = '<p>' + str.substring(0, length) + '...' + '</p>';
-                            }
-                        } else {
-                            titulo = '';
-                        }
-                    }
-
-                    out += '<li class="'+ classList +'">' +
-                        '<a href="' + classOpen + '" target="_blank" class="pureInsta-target">' + 
-                        '<figure>' +
-                        '<img src="' + images + '" alt=""/>' + 
-                        '</figure>' +
-                        '<div class="' + classHover + '">' + 
-                        classPlus + 
-                        titulo + 
-                        '</div>' + 
-                        '</a>' + 
-                        '</li>';
-                }
-                el.innerHTML = out;
+              }
+              out += `
+              <figure class="${this.data['classItem']}" ${(this.data['bgPhoto']) ? `style="background-image: url(${fotoURL});"`: ``}>
+                <a href="${permalink}" title="Ver foto no Instagram" class="pure-insta__target" ${(this.data['openInsta']) ? 'target="_blank"' : ''}>
+                  <img src="${fotoURL}" alt="${document.title}"/>`;
+              if(this.captionTxt){
+                out += `<figcaption class="${this.data['classHover']}">${this.plus} ${this.captionTxt}</figcaption>`;
+              }
+              out += `</a></figure>`;
+              if(i===this.data['amount']){break}else{i++}
             }
+            this.el.innerHTML = out;
+          });
+      }
+    },
+    init(){
+      const obj = arguments[0];
+      for(let [key, value] of Object.entries(this.data)){
+        if(obj[key]){
+          this.data[key] = obj[key];
+        } else {
+          if(key==='element' || key==='token'){
+            console.log(this.data[key]);
+          }
         }
-    };
-}();
+      }
+      this.el = document.querySelector(this.data['element']);
+      if(!this.el){
+        console.log('PureInsta.js: favor declarar o elemento que vai receber as imagens.');
+      }
+      if(this.data['classPlus']){
+        this.plus = `<i class="${this.data['classPlus']}"></i>`;
+      }
+      this.loopInsta();
+    }
+  }
