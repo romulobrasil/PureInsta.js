@@ -1,7 +1,7 @@
 /* ========================================================================
  * Pure Insta JS: pureinsta.js v1.0
  * https://romulobrasil.com
- * Copyright (c) 2016 Rômulo Brasil
+ * Copyright (c) 2016-2022 Rômulo Brasil
  * ========================================================================
  */
 
